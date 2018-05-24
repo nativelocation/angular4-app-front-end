@@ -1,0 +1,156 @@
+.content {
+  md-tab-group {
+    margin-top: 6.4rem;
+    mat-tab-label {
+      font-weight: 500;
+    }
+  }
+  h1.header {
+    text-align: center;
+    margin-top: 6.4rem;
+    margin-bottom: .8rem;
+    padding-left: 1.6rem;
+    padding-right: 1.6rem;
+    font-size: 4.8rem;
+    font-weight: 300;
+  }
+  .sub-header {
+    margin-top: 0;
+    margin-bottom: 6.4rem;
+    padding-left: 1.6rem;
+    padding-right: 1.6rem;
+    text-align: center;
+    color: #757575;
+    font-weight: 300;
+    line-height: 1.5;
+  }
+  .plans {
+    .plan {
+      md-icon {
+        width: 6.4rem;
+        height: 6.4rem;
+        font-size: 6.4rem;
+      }
+      margin: .8rem;
+      max-width: 27.2rem;
+      text-align: center;
+      padding: 4.8rem 1.6rem;
+      h1 {
+        font-size: 4.8rem;
+      }
+      h3 {
+        margin-bottom: 1.6rem;
+      }
+      .description {
+        font-size: 2.0rem;
+        font-weight: 300;
+        color: #757575;
+        margin: 0;
+      }
+      .bill {
+        font-size: 1.2rem;
+        color: #9E9E9E;
+      }
+      .free-trial {
+        color: #2196f3;
+      }
+    }
+  }
+  .account-details, .payment-details {
+    margin-top: 7.2rem;
+    margin-bottom: .8rem;
+    .summary {
+      padding: 1.6rem;
+      margin-left: 7.2rem;
+      margin-top: 1.6rem;
+      max-width: 18.8rem;
+      h5 {
+        margin: 0 0 1.6rem 0;
+        border-bottom: 0.05rem solid #ccc;
+        padding-bottom: .8rem;
+        font-weight: 500;
+      }
+      p {
+        margin: .8rem 0;
+        font-size: 1.2rem;
+        &.label {
+          color: #ccc;
+        }
+      }
+      .total {
+        margin-top: 1.6rem;
+        padding-top: .8rem;
+        border-top: 0.05rem solid #ccc;
+        p {
+          font-size: 1.4rem;
+          font-weight: 500;
+          color: #000;
+        }
+      }
+      md-checkbox {
+        font-size: 1.2rem;
+      }
+      .terms {
+        margin-top: .8rem;
+        text-align: justify;
+        span {
+          margin-left: .8rem;
+          font-size: 1.4rem;
+          color: #ccc;
+        }
+      }
+      button {
+        width: 100%;
+        margin-top: 2.4rem;
+      }
+      .subscription-info {
+        margin-top: 1.6rem;
+        line-height: 1.5;
+      }
+    }
+    .details {
+      margin-top: 1.6rem;
+      .card {
+        background: url('https://static.zuora.com/Resources/6192229/Images/card-logos-3.png');
+        width: 5.2rem;
+        height: 3.2rem;
+        margin-right: .4rem;
+        margin-bottom: 1.6rem;
+        &.master-card {
+          background-position: 0 27.8rem;
+        }
+        &.jbc {
+          background-position: 0 44.2rem;
+        }
+        &.visa {
+          background-position: 0 11.4rem;
+          width: 6rem;
+        }
+      }
+      h5 {
+        margin-bottom: 0;
+        font-weight: 500;
+      }
+      p {
+        font-size: 1.4rem;
+        margin-top: .4rem;
+        margin-bottom: 2.4rem;
+        color: #757575;
+        md-icon {
+          vertical-align: middle;
+        }
+      }
+      md-input-container {
+        margin-right: 2.4rem;
+        margin-bottom: 1.6rem;
+        min-width: 24.8rem !important;
+        &:last-child {
+          margin-right: 0;
+        }
+        md-hint {
+          color: #ccc;
+        }
+      }
+    }
+  }
+}

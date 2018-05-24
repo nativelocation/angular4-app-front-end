@@ -1,0 +1,91 @@
+<div fxFill fxLayout="column" fxLayoutAlign="space-between none">
+  <div class="content">
+    <div fxFill fxLayoutAlign="center center">
+      <md-card class="job-detail-container"
+               fxFlex.lt-sm="90%" fxFlex.lt-md="56rem" fxFlex.md="68rem" fxFlex.gt-sm="92.4rem">
+        <h1 class="heading">{{custodian ? 'Update' : 'Create a new'}} custodian</h1>
+
+        <p class="sub-header">
+          Custodians can help you finish task and assigning them to a specific area of responsibility.
+        </p>
+
+        <form [formGroup]="custodianForm.getForm()" (ngSubmit)="save()" novalidate>
+          <div fxLayout.lt-md="column" fxLayout.gt-sm="row" fxLayoutGap="1.6rem">
+
+            <section fxFlex>
+              <md-input-container fxFlex>
+                <input type="text" mdInput placeholder="First name" formControlName="firstName">
+                <md-error *ngIf="custodianForm.hasError('firstName')">
+                  {{ custodianForm.getError('firstName') }}
+                </md-error>
+              </md-input-container>
+            </section>
+
+            <section fxFlex>
+              <md-input-container fxFlex>
+                <input type="text" mdInput placeholder="Last name" formControlName="lastName">
+                <md-error *ngIf="custodianForm.hasError('lastName')">
+                  {{ custodianForm.getError('lastName') }}
+                </md-error>
+              </md-input-container>
+            </section>
+
+          </div>
+
+          <div fxLayout.lt-md="column" fxLayout.gt-sm="row" fxLayoutGap="1.6rem">
+
+            <section fxFlex>
+              <md-input-container fxFlex>
+                <input type="email" mdInput placeholder="Email" formControlName="email">
+                <md-error *ngIf="custodianForm.hasError('email')">
+                  {{ custodianForm.getError('email') }}
+                </md-error>
+              </md-input-container>
+            </section>
+
+          </div>
+
+          <div fxLayout.lt-md="column" fxLayout.gt-sm="row" fxLayoutGap="1.6rem">
+
+            <section fxFlex>
+              <md-input-container fxFlex>
+                <input type="text" mdInput placeholder="Phone" formControlName="phone">
+                <md-error *ngIf="custodianForm.hasError('phone')">
+                  {{ custodianForm.getError('phone') }}
+                </md-error>
+              </md-input-container>
+            </section>
+
+          </div>
+
+          <div fxLayout.lt-md="column" fxLayout.gt-sm="row" fxLayoutGap="1.6rem">
+
+            <section fxFlex>
+              <md-input-container fxFlex>
+                <input type="text" mdInput placeholder="Position" formControlName="position">
+                <md-error *ngIf="custodianForm.hasError('position')">
+                  {{ custodianForm.getError('position') }}
+                </md-error>
+              </md-input-container>
+            </section>
+
+          </div>
+
+          <div class="input-container" fxLayout="row" fxLayoutGap="1.6rem">
+            <span fxFlex></span>
+            <a md-raised-button [routerLink]="cancelRoute">CANCEL</a>
+            <button type="button" md-raised-button class="danger" *ngIf="custodian" (click)="remove(custodian)">DELETE</button>
+            <button md-raised-button color="primary">SAVE</button>
+          </div>
+        </form>
+      </md-card>
+    </div>
+  </div>
+
+  <footer>
+    <p>Copyright © 2017 Overpass Limited. All rights reserved.</p>
+  </footer>
+</div>
+
+
+

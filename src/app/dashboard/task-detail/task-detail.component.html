@@ -1,0 +1,66 @@
+<div fxFill fxLayout="column" fxLayoutAlign="space-between none">
+  <div class="content">
+    <div fxFill fxLayoutAlign="center center">
+      <md-card class="job-detail-container"
+               fxFlex.lt-sm="90%" fxFlex.lt-md="56rem" fxFlex.md="68rem" fxFlex.gt-sm="92.4rem">
+        <h1 class="heading">{{task ? 'Update' : 'Create a new'}} task</h1>
+
+        <p class="sub-header">
+          {{task ? 'Fill the required fields and update' : 'Create a task for your job to let custodian know what to do.'}}
+        </p>
+
+        <img *ngIf="task" [src]="'https://s3-eu-west-1.amazonaws.com/wjg-uploads/' + task?.imageId" alt="" width="256">
+
+        <form [formGroup]="taskForm.getForm()" (ngSubmit)="onSave()" novalidate>
+          <div fxLayout.lt-md="column" fxLayout.gt-sm="row" fxLayoutGap="1.6rem">
+
+            <section fxFlex>
+              <md-input-container fxFlex>
+                <input type="text" mdInput placeholder="Name" formControlName="name">
+                <md-error *ngIf="taskForm.hasError('name')">
+                  {{ taskForm.getError('name') }}
+                </md-error>
+              </md-input-container>
+            </section>
+
+            <section fxFlex>
+              <md-input-container fxFlex>
+                <input type="text" mdInput placeholder="Description" formControlName="description">
+                <md-error *ngIf="taskForm.hasError('description')">
+                  {{ taskForm.getError('description') }}
+                </md-error>
+              </md-input-container>
+            </section>
+          </div>
+
+          <div class="input-container" fxLayout.lt-md="column" fxLayout.gt-sm="row" fxLayoutGap="1.6rem">
+            <section fxFlex>
+              <md-input-container fxFlex>
+                <textarea mdInput placeholder="Instructions" formControlName="instructions" rows="10"></textarea>
+                <md-error *ngIf="taskForm.hasError('instructions')">
+                  {{ taskForm.getError('instructions') }}
+                </md-error>
+              </md-input-container>
+            </section>
+          </div>
+
+          <div class="input-container" fxLayout="row" fxLayoutGap="1.6rem">
+            <cus-input-file (onFileSelect)="onFileSelect($event)" [accept]="'image/*'">
+              <span class="nofiles">CHOOSE FILE</span>
+              <span class="selected">Files selected</span>
+            </cus-input-file>
+            <!--<button type="submit" md-raised-button color="primary">UPLOAD PHOTO</button>-->
+            <span fxFlex></span>
+            <a md-raised-button [routerLink]="routeTask">CANCEL</a>
+            <button type="button" md-raised-button class="danger" *ngIf="task" (click)="onRemove(task)">DELETE</button>
+            <button type="submit" md-raised-button color="primary" [disabled]="!isReady">SAVE</button>
+          </div>
+        </form>
+      </md-card>
+    </div>
+  </div>
+
+  <footer>
+    <p>Copyright © 2017 Overpass Limited. All rights reserved.</p>
+  </footer>
+</div>

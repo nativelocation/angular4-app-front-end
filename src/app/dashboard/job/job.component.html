@@ -1,0 +1,55 @@
+<div fxFill fxLayout="column" fxLayoutAlign="space-between none">
+  <div class="content">
+    <div fxFill fxLayoutAlign="center center">
+      <md-card class="job-container" fxFlex.lt-md="56rem" fxFlex.md="68rem" fxFlex.gt-sm="92.4rem" fxFlex.lt-sm="90%">
+        <section fxLayout.gt-xs="row"
+                 fxLayout.xs="column" fxLayoutAlign.gt-xs="start center" fxLayoutAlign.xs="start end">
+          <h1 class="heading" fxFlex>Current jobs</h1>
+          <a md-raised-button color="primary" [routerLink]="routeNew">ADD A NEW JOB</a>
+        </section>
+
+        <p class="sub-header">Setting up a good work place is a great start for you. Choose a recent work or add a new one to continue.</p>
+
+        <section *ngIf="!activeJobs?.total && !inactiveJobs?.data.length">
+          <h5>No job just yet.</h5>
+        </section>
+
+        <section *ngIf="activeJobs?.total && activeJobs?.data.length">
+          <h5>Active jobs</h5>
+
+          <section class="job-list">
+            <md-card class="job" *ngFor="let job of activeJobs.data" (click)="onNavigateOverview(job)">
+              <h6>{{ job.name }}</h6>
+              <p>Type: Once</p>
+              <p>No. of tasks: {{ job.taskStatusLookup.length }}</p>
+              <p>Progress</p>
+              <md-progress-bar [color]="'primary'" [mode]="'determinate'" [value]="0"></md-progress-bar>
+              <h3>0%</h3>
+            </md-card>
+          </section>
+        </section>
+
+        <section *ngIf="inactiveJobs?.total && inactiveJobs?.data.length">
+          <h5>In active jobs</h5>
+
+          <section class="job-list">
+            <md-card class="job">
+              <h6>Hardware job</h6>
+              <p>Type: Daily routine</p>
+              <p>Progress</p>
+              <md-progress-bar [color]="'primary'" [mode]="'determinate'" [value]="60"></md-progress-bar>
+              <h3>60%</h3>
+            </md-card>
+          </section>
+        </section>
+      </md-card>
+    </div>
+  </div>
+
+  <footer>
+    <p>Copyright © 2017 Overpass Limited. All rights reserved.</p>
+  </footer>
+</div>
+
+
+

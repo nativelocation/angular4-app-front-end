@@ -1,0 +1,45 @@
+<div fxFill fxLayout="column">
+  <md-toolbar color="primary">
+    <span fxFlex><md-icon>graphic_eq</md-icon> Custodian</span>
+    <span>
+    <button md-button (click)="navigate('/auth/register')">REGISTER</button>
+  </span>
+  </md-toolbar>
+
+  <md-progress-bar class="loading" mode="indeterminate" color="accent" *ngIf="isLoading"></md-progress-bar>
+
+  <div class="login" fxLayout="row" fxLayoutAlign="center center">
+    <md-card class="login-card">
+      <form [formGroup]="loginForm.getForm()" novalidate>
+        <md-card-content>
+          <div class="logo" fxLayout="row" fxLayoutAlign="center none">
+            <md-icon>graphic_eq</md-icon>
+          </div>
+          <h1>The Custodian</h1>
+          <h3>Log in</h3>
+          <p>to continue to Custodian</p>
+          <div fxLayout="column">
+            <md-input-container>
+              <input mdInput type="email" placeholder="E-mail" formControlName="email">
+              <md-error *ngIf="loginForm?.hasError('email')">
+                {{ loginForm.getError('email') }}
+              </md-error>
+            </md-input-container>
+            <md-input-container class="margin-top-8">
+              <input mdInput type="password" placeholder="Password" formControlName="password">
+              <md-error *ngIf="loginForm?.hasError('password')">
+                {{ loginForm.getError('password') }}
+              </md-error>
+            </md-input-container>
+          </div>
+        </md-card-content>
+        <md-card-actions>
+          <span fxFlex><a md-button routerLink="/auth/forgot">Forgot password?</a></span>
+          <button md-raised-button color="primary" (click)="login()" [disabled]="isLoading">LOG IN</button>
+        </md-card-actions>
+      </form>
+    </md-card>
+  </div>
+
+</div>
+

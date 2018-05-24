@@ -1,0 +1,21 @@
+md-sidenav-container {
+  md-sidenav {
+    margin-top: 6.4rem;
+    width: 25.6rem;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    md-nav-list {
+      margin-top: 5.6rem;
+      font-weight: 500;
+      a[md-list-item] {
+        font-size: 1.6rem;
+        font-weight: 500;
+        color: #9E9E9E;
+        md-icon {
+          margin-right: 2.4rem;
+          color: #000;
+        }
+      }
+    }
+  }
+}
+

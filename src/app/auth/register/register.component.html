@@ -1,0 +1,204 @@
+<div fxFill fxLayout="column" fxLayoutAlign="space-between none">
+  <section class="content">
+
+    <md-toolbar color="primary">
+      <span fxFlex><md-icon>graphic_eq</md-icon> Custodian</span>
+      <span>
+        <button md-button (click)="navigate('/auth/login')">LOG IN</button>
+      </span>
+    </md-toolbar>
+
+    <md-progress-bar class="loading" mode="indeterminate" color="accent" *ngIf="isLoading"></md-progress-bar>
+
+    <md-tab-group [selectedIndex]="selectedIndex">
+      <md-tab label="PLAN TYPE">
+        <h1 class="header">Start using Custodian app now.</h1>
+        <h4 class="sub-header">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h4>
+        <section class="plans"
+                 fxLayout.gt-xs="row"
+                 fxLayout.xs="column"
+                 fxLayoutAlign="center none"
+                 fxLayoutAlign.xs="none center">
+          <md-card class="plan" *ngFor="let subscription of subscriptions?.data; let idx = index">
+            <md-icon>{{ icons[idx] }}</md-icon>
+            <h3>{{ subscription.name }}</h3>
+            <p class="description">{{ subscription.plansLookup[0]?.description }}</p>
+            <h1>£{{ subscription.plansLookup[0]?.price }}</h1>
+            <p class="bill">PER MONTH / BILLED MONTHLY</p>
+            <button md-raised-button color="primary" (click)="onPlanSelected(subscription.plansLookup[0])">GET STARTED</button>
+            <p>or start a <span class="free-trial">FREE TRIAL</span></p>
+          </md-card>
+
+        </section>
+      </md-tab>
+      <md-tab label="ACCOUNT DETAILS">
+        <h1 class="header">Type in your account details</h1>
+        <h4 class="sub-header">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h4>
+        <form [formGroup]="registerForm.getForm()" (ngSubmit)="register()" novalidate>
+          <section class="account-details"
+                 fxLayout="row"
+                 fxLayoutAlign="center none">
+            <section class="details">
+              <h5>Basic info</h5>
+              <p>Please fill up all your required information.</p>
+              <div fxLayou="row">
+                <md-input-container>
+                  <input type="text" mdInput placeholder="First name" formControlName="firstName">
+                  <md-error *ngIf="registerForm.hasError('firstName')">
+                    {{ registerForm.getError('firstName') }}
+                  </md-error>
+                </md-input-container>
+                <md-input-container>
+                  <input type="text" mdInput placeholder="Last name" formControlName="lastName">
+                  <md-error *ngIf="registerForm.hasError('lastName')">
+                    {{ registerForm.getError('lastName') }}
+                  </md-error>
+                </md-input-container>
+              </div>
+              <div fxLayou="row">
+                <md-input-container fxFlex>
+                  <input type="email" mdInput placeholder="E-mail" formControlName="email">
+                  <md-error *ngIf="registerForm.hasError('email')">
+                    {{ registerForm.getError('email') }}
+                  </md-error>
+                </md-input-container>
+              </div>
+              <div fxLayou="row">
+                <md-input-container>
+                  <input type="text" mdInput placeholder="Company name" formControlName="company">
+                  <md-error *ngIf="registerForm.hasError('company')">
+                    {{ registerForm.getError('company') }}
+                  </md-error>
+                </md-input-container>
+                <md-input-container>
+                  <input type="text" mdInput placeholder="Country" formControlName="country">
+                  <md-error *ngIf="registerForm.hasError('country')">
+                    {{ registerForm.getError('country') }}
+                  </md-error>
+                </md-input-container>
+              </div>
+              <div fxLayou="row">
+                <md-input-container>
+                  <input type="password" mdInput placeholder="Password" type="password" formControlName="password">
+                  <md-error *ngIf="registerForm.hasError('password')">
+                    {{ registerForm.getError('password') }}
+                  </md-error>
+                </md-input-container>
+                <md-input-container>
+                  <input type="password" mdInput placeholder="Confirm Password" type="password" formControlName="confirmPassword">
+                  <md-error *ngIf="registerForm.hasError('confirmPassword')">
+                    {{ registerForm.getError('confirmPassword') }}
+                  </md-error>
+                </md-input-container>
+              </div>
+            </section>
+
+            <section class="summary">
+              <h5>Purchase summary</h5>
+              <div fxLayout="row" fxLayoutAlign="space-between none">
+                <p class="label">Plan:</p>
+                <p>{{ selected?.name ? selected?.name : 'No plan seleted' }}</p>
+              </div>
+              <div fxLayout="row" fxLayoutAlign="space-between none">
+                <p class="label">Price:</p>
+                <p>£{{ selected?.price ? selected?.price : '0' }}</p>
+              </div>
+              <div class="total" fxLayout="row" fxLayoutAlign="space-between none">
+                <p class="label">TOTAL:</p>
+                <p>£{{ selected?.price ? selected?.price : '0' }}</p>
+              </div>
+              <div class="terms" fxLayout="row">
+                <div>
+                  <md-checkbox formControlName="agree" [checked]="registerForm.getValue('agree')"></md-checkbox>
+                </div>
+                <div>
+                  <span>By checking here and continuing, I agree to the Overpass Terms of Use</span>
+                </div>
+              </div>
+              <button md-raised-button
+                      color="primary"
+                      [disabled]="isLoading || (!registerForm.getValue('agree') || registerForm.getValue('agree') === '')">CONTINUE</button>
+            </section>
+
+          </section>
+        </form>
+      </md-tab>
+      <md-tab label="PAYMENT DETAILS">
+        <h1 class="header">Type in your payment details</h1>
+        <h4 class="sub-header">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h4>
+        <form [formGroup]="paymentForm.getForm()" (ngSubmit)="purchase()" novalidate>
+          <section class="payment-details"
+                   fxLayout="row"
+                   fxLayoutAlign="center none">
+
+            <section class="details">
+              <h5>Payment info</h5>
+              <p>Why do we ask for this <span mdTooltip="We will use it to upgrade your subscription once you get expired that way you can continue using the system without hassle" [mdTooltipPosition]="'after'"><md-icon>help</md-icon></span></p>
+              <div fxLayout="row">
+                <div class="card visa"></div>
+                <div class="card master-card"></div>
+                <div class="card jbc"></div>
+                <div class="card"></div>
+              </div>
+              <div fxLayou="row">
+                <md-input-container>
+                  <input type="text" mdInput placeholder="Name on card" formControlName="cardholderName">
+                  <md-error *ngIf="paymentForm.hasError('cardholderName')">
+                    {{ paymentForm.getError('cardholderName') }}
+                  </md-error>
+                </md-input-container>
+                <md-input-container>
+                  <input type="text" mdInput placeholder="Card number" formControlName="number">
+                  <md-error *ngIf="paymentForm.hasError('number')">
+                    {{ paymentForm.getError('number') }}
+                  </md-error>
+                </md-input-container>
+              </div>
+              <div fxLayou="row">
+                <md-input-container>
+                  <input type="text" mdInput placeholder="Expiration" formControlName="expirationDate">
+                  <md-error *ngIf="paymentForm.hasError('expirationDate')">
+                    {{ paymentForm.getError('expirationDate') }}
+                  </md-error>
+                </md-input-container>
+                <md-input-container>
+                  <input type="text" mdInput placeholder="Security code" formControlName="cvv">
+                  <md-error *ngIf="paymentForm.hasError('cvv')">
+                    {{ paymentForm.getError('cvv') }}
+                  </md-error>
+                </md-input-container>
+              </div>
+            </section>
+
+            <section class="summary">
+              <h5>Purchase summary</h5>
+              <div fxLayout="row" fxLayoutAlign="space-between none">
+                <p class="label">Plan:</p>
+                <p>{{ selected?.name ? selected?.name : 'No plan seleted' }}</p>
+              </div>
+              <div fxLayout="row" fxLayoutAlign="space-between none">
+                <p class="label">Price:</p>
+                <p>£{{ selected?.price ? selected?.price : '0' }}</p>
+              </div>
+              <div class="total" fxLayout="row" fxLayoutAlign="space-between none">
+                <p class="label">TOTAL:</p>
+                <p>£{{ selected?.price ? selected?.price : '0' }}</p>
+              </div>
+              <button type="submit" md-raised-button color="primary">PURCHASE</button>
+              <p class="subscription-info">
+                Your selected subscription plan may automatically renew unless you cancel. For further details regarding automatic renewal and cancellation, please review our Terms of Use.
+              </p>
+              <p class="subscription-info">
+                Overpass is required by law to collect sales tax on purchases in some states. The actual tax amount will be calculated based on the applicable state and local sales tax when your order is processed.
+              </p>
+            </section>
+          </section>
+        </form>
+      </md-tab>
+    </md-tab-group>
+
+  </section>
+  <footer>
+    <p>Copyright © 2017 Overpass Limited. All rights reserved.</p>
+  </footer>
+</div>

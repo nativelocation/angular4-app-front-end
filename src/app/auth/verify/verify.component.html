@@ -1,0 +1,25 @@
+<div fxFill fxLayout="column" fxLayoutAlign="space-between none">
+  <section class="content">
+
+    <md-toolbar color="primary">
+      <span fxFlex><md-icon>graphic_eq</md-icon> Custodian</span>
+      <span>
+        <button md-button (click)="navigate('/auth/login')">LOG IN</button>
+      </span>
+    </md-toolbar>
+
+    <md-progress-bar mode="indeterminate" color="accent"></md-progress-bar>
+
+    <h1 class="header">Verifying your account</h1>
+
+    <section [ngSwitch]="isVerified">
+      <h4 class="sub-header" *ngSwitchCase="'LOADING'">Please wait while we are verifying your account...</h4>
+      <h4 class="sub-header" *ngSwitchCase="'TOKEN_MALFORMED'">Your verification token is malformed. Try <a class="login-link" [routerLink]="'/auth/login'">logging in</a> if you are already verified. If not contact our support. Thank you</h4>
+      <h4 class="sub-header" *ngSwitchCase="'VERIFIED'">Your account has been verified. <a class="login-link" [routerLink]="'/auth/login'">You can now log in to your account</a></h4>
+      <h4 class="sub-header" *ngSwitchCase="'VERIFY_EXPIRED'">Your verification token has expired. Re-send?</h4>
+    </section>
+  </section>
+  <footer>
+    <p>Copyright © 2017 Overpass Limited. All rights reserved.</p>
+  </footer>
+</div>

@@ -1,0 +1,48 @@
+<md-toolbar color="primary">
+  <a md-icon-button *ngIf="mq === 'sm' || mq === 'xs'" (click)="sidenav.toggle()">
+    <md-icon>menu</md-icon>
+  </a>
+  <span fxFlex><md-icon *ngIf="mq !== 'sm' && mq !== 'xs'">graphic_eq</md-icon> Custodian</span>
+  <span>
+    <a md-icon-button [mdMenuTriggerFor]="menu">
+      <md-icon>settings</md-icon>
+    </a>
+    <md-menu #menu="mdMenu">
+      <button md-menu-item>
+        <md-icon>account_circle</md-icon>
+        <span>Account settings</span>
+      </button>
+      <button md-menu-item>
+        <md-icon>subscriptions</md-icon>
+        <span>Subscriptions</span>
+      </button>
+      <button md-menu-item>
+        <md-icon>redo</md-icon>
+        <span>Log out</span>
+      </button>
+    </md-menu>
+  </span>
+</md-toolbar>
+
+<md-progress-bar class="loading" mode="indeterminate" color="accent" *ngIf="isLoading"></md-progress-bar>
+
+<md-sidenav-container fxFill>
+  <md-sidenav #sidenav mode="{{mode}}" opened="{{opened}}">
+    <md-nav-list>
+      <h6 md-subheader>PLACE</h6>
+      <a md-list-item [routerLink]="'/work'" routerLinkActive="active">
+        <md-icon>directions_walk</md-icon> Work
+      </a>
+      <h6 md-subheader>DEVELOP</h6>
+      <a md-list-item [routerLink]="routeCustodian" routerLinkActive="active">
+        <md-icon>people</md-icon> Custodian / Employee
+      </a>
+      <a md-list-item [routerLink]="routeJob" routerLinkActive="active">
+        <md-icon>airline_seat_recline_normal</md-icon> Jobs</a>
+      <a md-list-item [routerLink]="routeTask" routerLinkActive="active">
+        <md-icon>assignment</md-icon>General tasks</a>
+    </md-nav-list>
+  </md-sidenav>
+
+  <router-outlet fxFill></router-outlet>
+</md-sidenav-container>

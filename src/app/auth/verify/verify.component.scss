@@ -1,0 +1,31 @@
+.content {
+  md-tab-group {
+    margin-top: 6.4rem;
+    mat-tab-label {
+      font-weight: 500;
+    }
+  }
+  h1.header {
+    text-align: center;
+    margin-top: 12.8rem;
+    margin-bottom: .8rem;
+    padding-left: 1.6rem;
+    padding-right: 1.6rem;
+    font-size: 4.8rem;
+    font-weight: 300;
+  }
+  .sub-header {
+    margin-top: 0;
+    margin-bottom: 6.4rem;
+    padding-left: 1.6rem;
+    padding-right: 1.6rem;
+    text-align: center;
+    color: #757575;
+    font-weight: 300;
+    line-height: 1.5;
+  }
+  .login-link {
+    text-decoration: none;
+    color: #2196f3;
+  }
+}

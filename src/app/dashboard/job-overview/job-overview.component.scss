@@ -1,0 +1,87 @@
+md-card.job-container {
+  box-shadow: 0 1px 8px 0 rgba(0,0,0,.2), 0 3px 4px 0 rgba(0,0,0,.14), 0 3px 3px -2px rgba(0,0,0,.12);
+  margin: 13.6rem 0 7.2rem 0;
+  padding: 7.2rem 4.8rem;
+  h1.heading {
+    font-size: 4.8rem;
+    font-weight: 300;
+    margin-bottom: .8rem;
+    line-height: 1.2;
+    margin-top: 0;
+  }
+  a[md-raised-button] {
+    margin-bottom: 1.6rem;
+  }
+  p.sub-header {
+    margin-top: 0;
+    color: #9E9E9E;
+    font-size: 2.0rem;
+  }
+  h5 {
+    margin-bottom: 1.6rem;
+    font-weight: 500;
+  }
+  .custodian-list {
+    .custodian {
+      display: inline-block;
+      vertical-align: middle;
+      cursor: pointer;
+      width: 20.4rem !important;
+      height: 16.8rem !important;
+      margin-right: 1.6rem;
+      margin-bottom: 1.6rem;
+      &.new {
+        background-color: #fafafa;
+        md-icon {
+          font-size: 4.8rem;
+          width: 4.8rem;
+          height: 4.8rem;
+        }
+      }
+      a[md-icon-button] {
+        margin-top: -1.6rem;
+        margin-right: -1.6rem;
+        color: #9E9E9E;
+        &:hover {
+          background-color: #f4f4f4;
+        }
+      }
+      .avatar {
+        margin-top: -0.8rem;
+        width: 6.4rem;
+        height: 6.4rem;
+        background-color: #f4f4f4;
+        border-radius: 50%;
+        md-icon {
+          width: 3.2rem;
+          height: 3.2rem;
+          font-size: 3.2rem;
+          color: #9E9E9E;
+        }
+      }
+      h6 {
+        margin-bottom: 0;
+        margin-top: .8rem;
+        font-weight: 500;
+        &.add {
+          margin-top: 0;
+        }
+      }
+      p {
+        margin: .4rem 0 0 0;
+        font-size: 1.2rem;
+        color: #9E9E9E;
+      }
+      md-progress-bar {
+        margin-top: 1.6rem;
+      }
+      h3 {
+        margin-top: .4rem;
+        font-size: 2rem;
+        font-weight: 500;
+        text-align: right;
+      }
+    }
+  }
+}
+

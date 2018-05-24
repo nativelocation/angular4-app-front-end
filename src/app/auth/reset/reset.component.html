@@ -1,0 +1,50 @@
+<div fxFill fxLayout="column">
+  <md-toolbar color="primary">
+    <span fxFlex><md-icon>graphic_eq</md-icon> Custodian</span>
+    <span>
+    <button md-button (click)="navigate('/auth/register')">REGISTER</button>
+    <button md-button (click)="navigate('/auth/login')">LOG IN</button>
+  </span>
+  </md-toolbar>
+
+  <div class="forgot" fxLayout="row" fxLayoutAlign="center center">
+    <md-card class="forgot-card">
+      <form [formGroup]="resetForm.getForm()" (ngSubmit)="onSubmit()" novalidate>
+        <md-card-content>
+          <h3>Reset password</h3>
+          <p>Enter your new password and confirm the password.</p>
+          <div fxLayout="column">
+            <!--<md-input-container>-->
+              <!--<input mdInput type="email" placeholder="E-mail" formControlName="email">-->
+              <!--<md-error *ngIf="forgotForm.controls['email'].hasError('required')">-->
+                <!--Email is required.-->
+              <!--</md-error>-->
+              <!--<md-error *ngIf="forgotForm.controls['email'].hasError('email') && forgotForm.controls['email'].value !== ''">-->
+                <!--Please enter a valid email address.-->
+              <!--</md-error>-->
+            <!--</md-input-container>-->
+
+            <md-input-container>
+              <input type="password" mdInput placeholder="Password" type="password" formControlName="password">
+              <md-error *ngIf="resetForm.hasError('password')">
+                {{ resetForm.getError('password') }}
+              </md-error>
+            </md-input-container>
+            <md-input-container>
+              <input type="password" mdInput placeholder="Confirm Password" type="password" formControlName="confirmPassword">
+              <md-error *ngIf="resetForm.hasError('confirmPassword')">
+                {{ resetForm.getError('confirmPassword') }}
+              </md-error>
+            </md-input-container>
+          </div>
+        </md-card-content>
+        <md-card-actions>
+          <span fxFlex></span>
+          <button md-raised-button color="primary">SUBMIT</button>
+        </md-card-actions>
+      </form>
+    </md-card>
+  </div>
+
+</div>
+

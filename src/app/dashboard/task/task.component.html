@@ -1,0 +1,36 @@
+<div fxFill fxLayout="column" fxLayoutAlign="space-between none">
+  <div class="content">
+    <div fxFill fxLayoutAlign="center center">
+      <md-card class="custodian-container" fxFlex.lt-md="56rem" fxFlex.md="68rem" fxFlex.gt-sm="92.4rem" fxFlex.lt-sm="90%">
+        <section fxLayout.gt-xs="row"
+                 fxLayout.xs="column" fxLayoutAlign.gt-xs="start center" fxLayoutAlign.xs="start end">
+          <h1 class="heading" fxFlex>Tasks</h1>
+          <a md-raised-button color="primary" [routerLink]="routeNew">ADD A NEW TASK</a>
+        </section>
+
+        <p class="sub-header">Setting up a good work place is a great start for you. Choose a recent work or add a new one to continue.</p>
+
+        <section class="custodian-list">
+
+          <h5 *ngIf="tasks?.length === 0">No Task just yet.</h5>
+
+          <md-card class="custodian" *ngFor="let task of tasks" (click)="onNavigateToDetail(task)">
+            <section class="task-image" [ngStyle]="{ 'background': 'url(https://s3-eu-west-1.amazonaws.com/wjg-uploads/' + task.imageId + ') no-repeat 0 0' }"></section>
+            <div class="inner-content">
+              <h6>{{ task.name }}</h6>
+              <p>{{ task.description }}</p>
+            </div>
+          </md-card>
+
+        </section>
+      </md-card>
+    </div>
+  </div>
+
+  <footer>
+    <p>Copyright © 2017 Overpass Limited. All rights reserved.</p>
+  </footer>
+</div>
+
+
+

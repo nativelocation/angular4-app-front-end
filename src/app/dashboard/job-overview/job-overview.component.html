@@ -1,0 +1,48 @@
+<div fxFill fxLayout="column" fxLayoutAlign="space-between none">
+  <div class="content">
+    <div fxFill fxLayoutAlign="center center">
+      <md-card class="job-container" fxFlex.lt-md="56rem" fxFlex.md="68rem" fxFlex.gt-sm="92.4rem" fxFlex.lt-sm="90%">
+        <section fxLayout.gt-xs="row"
+                 fxLayout.xs="column" fxLayoutAlign.gt-xs="start center" fxLayoutAlign.xs="start end">
+          <h1 class="heading" fxFlex>Job Overview</h1>
+        </section>
+
+        <p class="sub-header">Setting up a good work place is a great start for you. Choose a recent work or add a new one to continue.</p>
+
+        <section fxLayout="column" fxLayoutAlign.gt-xs="start center">
+
+          <img *ngIf="job"
+               [src]="'https://s3-eu-west-1.amazonaws.com/wjg-uploads/' + job?.imageId" alt="" width="256" height="256"
+               [style.margin]="'0 auto'">
+          <button md-raised-button color="primary">PRINT QR CODE</button>
+        </section>
+
+        <section class="custodian-list">
+
+          <h3>To do list</h3>
+
+          <md-card class="custodian" *ngFor="let taskStatus of job?.taskStatusLookup">
+            <div fxLayout="row">
+              <section fxFlex>
+                <section class="avatar" fxLayout="column" fxLayoutAlign="center center">
+                  <md-icon>check_box_outline_blank</md-icon>
+                </section>
+              </section>
+            </div>
+
+            <h6>{{ taskStatus.taskLookup.name }}</h6>
+            <p>{{ taskStatus.taskLookup.description }}</p>
+            <p>{{ taskStatus.taskLookup.instructions }}</p>
+          </md-card>
+        </section>
+      </md-card>
+    </div>
+  </div>
+
+  <footer>
+    <p>Copyright © 2017 Overpass Limited. All rights reserved.</p>
+  </footer>
+</div>
+
+
+

@@ -1,0 +1,46 @@
+<h2 md-dialog-title>Create new work</h2>
+<form [formGroup]="workForm.getForm()" novalidate>
+  <md-dialog-content>
+    <section>
+      <md-input-container fxFlex>
+        <input mdInput placeholder="Name" formControlName="name">
+        <md-error *ngIf="workForm.hasError('name')">
+          {{ workForm.getError('name') }}
+        </md-error>
+      </md-input-container>
+    </section>
+
+    <section class="margin-top-8 margin-bottom-8">
+      <md-input-container fxFlex>
+        <textarea mdInput placeholder="Address" formControlName="address"></textarea>
+        <md-error *ngIf="workForm.hasError('address')">
+          {{ workForm.getError('address') }}
+        </md-error>
+      </md-input-container>
+    </section>
+
+    <section class="margin-top-8">
+      <md-input-container fxFlex>
+        <input mdInput placeholder="Country" formControlName="country">
+        <md-error *ngIf="workForm.hasError('country')">
+          {{ workForm.getError('country') }}
+        </md-error>
+      </md-input-container>
+    </section>
+
+    <section class="margin-top-8 margin-bottom-8">
+      <md-input-container fxFlex>
+        <textarea mdInput placeholder="Note" formControlName="note"></textarea>
+        <md-error *ngIf="workForm.hasError('note')">
+          {{ workForm.getError('note') }}
+        </md-error>
+      </md-input-container>
+    </section>
+  </md-dialog-content>
+  <md-dialog-actions>
+    <span fxFlex></span>
+    <button md-raised-button class="margin-right-8" md-dialog-close>CANCEL</button>
+    <button md-raised-button class="danger margin-right-8" [md-dialog-close]="{ delete: true }" *ngIf="data && data._id">DELETE</button>
+    <button md-raised-button color="primary" [md-dialog-close]="workForm.getData() || null" [disabled]="!workForm.isValid()">SAVE</button>
+  </md-dialog-actions>
+</form>

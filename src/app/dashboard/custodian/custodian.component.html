@@ -1,0 +1,107 @@
+<div fxFill fxLayout="column" fxLayoutAlign="space-between none">
+  <div class="content">
+    <div fxFill fxLayoutAlign="center center">
+      <md-card class="custodian-container" fxFlex.lt-md="56rem" fxFlex.md="68rem" fxFlex.gt-sm="92.4rem" fxFlex.lt-sm="90%">
+        <section fxLayout.gt-xs="row"
+                 fxLayout.xs="column" fxLayoutAlign.gt-xs="start center" fxLayoutAlign.xs="start end">
+          <h1 class="heading" fxFlex>Custodians</h1>
+          <a md-raised-button color="primary" [routerLink]="newRoute">ADD A NEW CUSTODIAN</a>
+        </section>
+
+        <p class="sub-header">Setting up a good work place is a great start for you. Choose a recent work or add a new one to continue.</p>
+
+        <section *ngIf="custodians?.total === 0 && custodians?.data?.length === 0">
+          <h5>No custodian just yet.</h5>
+        </section>
+
+        <section *ngIf="custodians?.total > 0 && custodians?.data?.length">
+          <h5>Available custodians</h5>
+
+          <section class="custodian-list">
+
+            <md-card class="custodian" *ngFor="let custodian of custodians?.data">
+              <div fxLayout="row">
+                <section fxFlex>
+                  <section class="avatar" fxLayout="column" fxLayoutAlign="center center">
+                    <md-icon>person</md-icon>
+                  </section>
+                </section>
+                <a md-icon-button (click)="onEdit(custodian)">
+                  <md-icon>edit</md-icon>
+                </a>
+              </div>
+
+              <h6>{{ custodian.firstName }} {{ custodian.lastName }}</h6>
+              <p>{{ custodian.position }}</p>
+              <p>{{ custodian.phone }}</p>
+            </md-card>
+
+            <!--<md-card class="custodian">-->
+            <!--<div fxLayout="row">-->
+            <!--<section fxFlex>-->
+            <!--<section class="avatar" fxLayout="column" fxLayoutAlign="center center">-->
+            <!--<md-icon>person</md-icon>-->
+            <!--</section>-->
+            <!--</section>-->
+            <!--<a md-icon-button>-->
+            <!--<md-icon>edit</md-icon>-->
+            <!--</a>-->
+            <!--</div>-->
+
+            <!--<h6>Rowena Gabriel</h6>-->
+            <!--<p>Accounts and Clients Assistant</p>-->
+            <!--<p>Phone not available</p>-->
+            <!--</md-card>-->
+
+            <!--<md-card class="custodian">-->
+            <!--<div fxLayout="row">-->
+            <!--<section fxFlex>-->
+            <!--<section class="avatar" fxLayout="column" fxLayoutAlign="center center">-->
+            <!--<md-icon>person</md-icon>-->
+            <!--</section>-->
+            <!--</section>-->
+            <!--<a md-icon-button>-->
+            <!--<md-icon>edit</md-icon>-->
+            <!--</a>-->
+            <!--</div>-->
+
+            <!--<h6>Sandee Ara Chica</h6>-->
+            <!--<p>Concept Designer and Animator</p>-->
+            <!--<p>Phone not available</p>-->
+            <!--</md-card>-->
+          </section>
+        </section>
+
+
+
+        <!--<h5>Not available</h5>-->
+
+        <!--<section class="custodian-list">-->
+          <!--<md-card class="custodian">-->
+            <!--<div fxLayout="row">-->
+              <!--<section fxFlex>-->
+                <!--<section class="avatar" fxLayout="column" fxLayoutAlign="center center">-->
+                  <!--<md-icon>person</md-icon>-->
+                <!--</section>-->
+              <!--</section>-->
+              <!--<a md-icon-button>-->
+                <!--<md-icon>edit</md-icon>-->
+              <!--</a>-->
+            <!--</div>-->
+
+            <!--<h6>Eric Wroolie</h6>-->
+            <!--<p>I make apps</p>-->
+            <!--<p>Phone not available</p>-->
+          <!--</md-card>-->
+        <!--</section>-->
+      </md-card>
+    </div>
+  </div>
+
+  <footer>
+    <p>Copyright © 2017 Overpass Limited. All rights reserved.</p>
+  </footer>
+</div>
+
+
+

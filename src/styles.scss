@@ -1,0 +1,82 @@
+/* You can add global styles to this file, and also import other style files */
+$danger: #F44336;
+
+html {
+  font-size: 62.5%;
+  height: 100%;
+}
+body {
+  height: 100%;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-size: 1.6rem;
+  font-weight: normal;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+}
+h1 {
+  font-size: 3.6rem;
+}
+h2 {
+  font-size: 3.0rem;
+}
+h3 {
+  font-size: 2.4rem;
+}
+h4 {
+  font-size: 2.0rem;
+}
+h5 {
+  font-size: 1.8rem;
+}
+h6 {
+  font-size: 1.6rem;
+}
+
+// material design changes
+md-progress-bar.loading, md-toolbar {
+  position: fixed !important;
+  z-index: 999;
+}
+md-toolbar {
+  box-shadow: 0 0 4px rgba(0,0,0,.14), 0 4px 8px rgba(0,0,0,.28);
+  md-icon {
+    vertical-align: text-top;
+  }
+}
+md-select {
+  .mat-select-trigger {
+    .mat-select-placeholder {
+      margin-bottom: 0.8rem !important;
+    }
+  }
+}
+md-progress-bar {
+}
+
+// custom changes
+.danger {
+  background-color: $danger;
+  color: white !important;
+}
+.margin-right-8 {
+  margin-right: .8rem !important;
+}
+.margin-top-8 {
+  margin-top: .8rem;
+}
+.margin-bottom-8 {
+  margin-bottom: .8rem;
+}
+footer {
+  p {
+    text-align: center;
+    color: #757575;
+    margin: 0;
+    background-color: #eee;
+    padding: 1.6rem;
+  }
+}
+.active {
+  background-color: #f4f4f4;
+}

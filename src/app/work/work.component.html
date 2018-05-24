@@ -1,0 +1,72 @@
+<div fxFill fxLayout="column" fxLayoutAlign="space-between none">
+  <div class="content">
+    <md-toolbar color="primary">
+      <span fxFlex><md-icon>graphic_eq</md-icon> Custodian</span>
+      <span>
+        <a md-icon-button [mdMenuTriggerFor]="menu">
+          <md-icon>settings</md-icon>
+        </a>
+        <md-menu #menu="mdMenu">
+          <button md-menu-item>
+            <md-icon>account_circle</md-icon>
+            <span>Account settings</span>
+          </button>
+          <button md-menu-item>
+            <md-icon>subscriptions</md-icon>
+            <span>Subscriptions</span>
+          </button>
+          <button md-menu-item (click)="logout()">
+            <md-icon>redo</md-icon>
+            <span>Log out</span>
+          </button>
+        </md-menu>
+      </span>
+    </md-toolbar>
+
+    <md-progress-bar class="loading" mode="indeterminate" color="accent" *ngIf="isLoading"></md-progress-bar>
+
+    <div fxFill fxLayoutAlign="center center">
+      <md-card class="work-container" fxFlex.lt-md="64rem" fxFlex.gt-sm="92.4rem" fxFlex.lt-sm="90%">
+        <h1 class="heading">Welcome to Custodian</h1>
+        <p class="sub-header">Setting up a good work place is a great start for you. Choose a recent work or add a new one to continue.</p>
+
+        <h5>{{ works?.total ? works?.total > 1 ? 'Recent works' : 'Recent work' : 'No work just yet' }}</h5>
+
+        <section class="work-list">
+          <md-card class="work new" (click)="openDialog($event)">
+            <div fxFill fxLayout="column" fxLayoutAlign="center center">
+              <md-icon>add</md-icon>
+              <h6 class="add">ADD WORK PLACE</h6>
+            </div>
+          </md-card>
+          <md-card class="work" *ngFor="let work of works?.data" (click)="navigate(work)">
+            <div fxLayout="row">
+              <section fxFlex>
+                <h6>{{ work.name }}</h6>
+              </section>
+              <a md-icon-button (click)="openDialog($event, work)">
+                <md-icon>edit</md-icon>
+              </a>
+            </div>
+            <!--<h6>{{ work.name }}</h6>-->
+            <p>{{ work.address }}</p>
+            <section [ngSwitch]="work.jobs.length > 0">
+              <div *ngSwitchCase="true">
+                <md-progress-bar [color]="'primary'" [mode]="'determinate'" [value]="0"></md-progress-bar>
+                <h3>{{ work.jobs.length ? work.jobs.length + '/' + work.jobs.length + ' jobs' : 'No job just yet.' }}</h3>
+              </div>
+              <div *ngSwitchCase="false">
+                <p class="no-job">No job just yet.</p>
+              </div>
+            </section>
+          </md-card>
+        </section>
+      </md-card>
+    </div>
+  </div>
+
+  <footer>
+    <p>Copyright © 2017 Overpass Limited. All rights reserved.</p>
+  </footer>
+</div>
+
