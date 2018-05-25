@@ -8,8 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "start": "ng server",
-    "postinstall": "ng build --aot -prod"
+    "start": "ng server"
   },
   "private": true,
   "dependencies": {
